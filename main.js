@@ -1,23 +1,26 @@
-/*
-Math Hint:
-tip amount = Bill amount x (tip percentage / 100)
-
-Requirements:
--You should have a form where a user is able to input the cost of the meal.
--The form should also let the user choose the percentage tip they want to give.
--When they submit the form, show them the total with tip added.
--Display the total tip amount as well so they know how much they're tipping.
-*/
-let billAmount = document.getElementById("bill-amount");
-let tipPercent = document.getElementById("tip-percentage");
 let submitButton = document.getElementById("submit-button");
+let reset = document.getElementById("resetButton")
 
 function calcAmount() {
-  let tipAmount = billAmount * (tipPercent/100);
-  document.getElementById("disp").innerHTML =
-    "Your total amount is " + tipAmount;
+  let billAmount = document.getElementById("bill-amount").value
+  let tipAmount =  billAmount *  (document.getElementById("tip-percentage").value/100); 
+  let totalAmount = Number(billAmount) + Number(tipAmount);
+  document.getElementById("dispTwo").innerHTML = "Your tip amount was " + tipAmount;
+  document.getElementById("disp").innerHTML = "Your total amount is " + totalAmount;
 }
 
 function allFunctions() {
   calcAmount();
 }
+
+reset.addEventListener("click", resetGame)
+billAmount = document.getElementById("bill-amount")
+tipAmount = document.getElementById("tip-percentage")
+ 
+function resetGame(){
+  document.getElementById("disp").innerHTML = "";
+  document.getElementById("dispTwo").innerHTML = "";
+  billAmount.value = "";
+  tipAmount.value = "";
+  
+} 
